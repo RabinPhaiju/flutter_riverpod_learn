@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_learn/screens/name2.dart';
-import 'package:flutter_riverpod_learn/screens/statefull_ref.dart';
+import 'package:flutter_riverpod_learn/screens/provider_page.dart';
+import 'package:flutter_riverpod_learn/screens/state_provider_page.dart';
 import 'package:flutter_riverpod_learn/screens/stream_provider.dart';
 import 'package:flutter_riverpod_learn/screens/user_future_ref.dart';
 import 'package:flutter_riverpod_learn/screens/user_provider.dart';
@@ -13,15 +13,32 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const STATEFULLREF(),
+        title: const Text('Flutter Riverpod'),
       ),
       body: Center(
         child: Column(
           children: [
-            Name2Provider(),
-            UserWidget(),
-            UserFutureWidget(),
-            StreamProviderWidget()
+            ElevatedButton(
+                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const ProviderPage()));},
+                child: const Text('Provider')
+            ),
+            ElevatedButton(
+                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const StateProviderPage()));},
+                child: const Text('State Provider')
+            ),
+            ElevatedButton(
+                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const FutureProviderPage()));},
+                child: const Text('Future Provider')
+            ),
+            ElevatedButton(
+                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const StreamProviderWidget()));},
+                child: const Text('Stream Provider')
+            ),
+            ElevatedButton(
+                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const  UserStateNotifierWidget()));},
+                child: const Text('State Notifier Provider')
+            ),
+
             ],
         ),
       ),

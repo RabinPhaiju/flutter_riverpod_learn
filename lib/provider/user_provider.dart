@@ -40,11 +40,24 @@ class UserModel {
 
 }
 
-class UserModelNotifier extends StateNotifier<UserModel> {
+class UserModelNotifier extends StateNotifier<List<UserModel>> {
   // UserModelNotifier(super.state);
-  UserModelNotifier() : super(const UserModel('', 0));
+  UserModelNotifier() : super([]);
 
-  void updateName(String n) {
-    state = state.copyWith(name: n);
+  void addUser(UserModel user) {
+    state = [...state, user];
+  }
+
+  void removeUser(UserModel user) {
+    state = state.where((element) => element.name != user.name).toList();
+  }
+
+  void clear() {
+    state = [];
   }
 }
+
+// expose stateNotifier
+final userProvider = StateNotifierProvider.autoDispose<UserModelNotifier, List<UserModel>>((ref) {
+  return UserModelNotifier();
+});
