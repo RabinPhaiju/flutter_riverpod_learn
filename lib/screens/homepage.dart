@@ -4,7 +4,7 @@ import 'package:flutter_riverpod_learn/screens/provider_page.dart';
 import 'package:flutter_riverpod_learn/screens/state_provider_page.dart';
 import 'package:flutter_riverpod_learn/screens/stream_provider.dart';
 import 'package:flutter_riverpod_learn/screens/user_future_ref.dart';
-import 'package:flutter_riverpod_learn/screens/user_provider.dart';
+import 'package:flutter_riverpod_learn/screens/todo_provider.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -35,8 +35,8 @@ class HomePage extends ConsumerWidget {
                 child: const Text('Stream Provider')
             ),
             ElevatedButton(
-                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const  UserStateNotifierWidget()));},
-                child: const Text('State Notifier Provider')
+                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const  TodoStateNotifierWidget()));},
+                child: const Text('Notifier Provider')
             ),
 
             ],
