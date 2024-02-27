@@ -37,7 +37,11 @@ class TodoModel {
 
 class TodoModelNotifier extends AutoDisposeNotifier<List<TodoModel>> {
   @override
-  List<TodoModel> build() => [];
+  List<TodoModel> build(){
+    return [
+      TodoModel('title1', 'description1', false, DateTime.now(), 1)
+    ]; // call local db or network.
+  }
 
   void add(TodoModel todo) {
     state = [todo,...state];
@@ -56,7 +60,7 @@ class TodoModelNotifier extends AutoDisposeNotifier<List<TodoModel>> {
   }
 
   void clear() {
-    state = [];
+    state.clear();
   }
 }
 
@@ -64,13 +68,9 @@ class TodoModelNotifier extends AutoDisposeNotifier<List<TodoModel>> {
 // here as a `List<TodoModel>` is a complex object, with advanced business logic like how to edit a todo.
 final todoProvider = NotifierProvider.autoDispose<TodoModelNotifier, List<TodoModel>>(TodoModelNotifier.new);
 
-/// This ensures that when we add/remove/edit todos, only what the
-/// impacted widgets rebuilds, instead of the entire list of items.
-final currentTodo = Provider<TodoModel>((ref) => throw UnimplementedError());
-
 enum TodoListFilter { all, active, completed, }
 /// here is no fancy logic behind manipulating the value since it's just enum.
-final todoListFilter = StateProvider.autoDispose((_) => TodoListFilter.all);
+final todoListFilter = StateProvider.autoDispose((_) => TodoListFilter.all); // default value is all.
 
 /// By using [Provider], this value is cached, making it performant.Even multiple widgets try to read the number of uncompleted todos,
 /// the value will be computed only once (until the todo-list changes).

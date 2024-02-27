@@ -24,44 +24,28 @@ class Toolbar extends HookConsumerWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          Tooltip(
-            message: 'All todos',
-            child: TextButton(
-              onPressed: () =>
-              ref.read(todoListFilter.notifier).state = TodoListFilter.all,
-              style: ButtonStyle(
-                visualDensity: VisualDensity.compact,
-                foregroundColor:
-                MaterialStateProperty.all(textColorFor(TodoListFilter.all)),
-              ),
-              child: const Text('All'),
-            ),
+          TextButton(
+            onPressed: () => ref.read(todoListFilter.notifier).state = TodoListFilter.all,
+            style: ButtonStyle(
+              visualDensity: VisualDensity.compact,
+              foregroundColor: MaterialStateProperty.all(textColorFor(TodoListFilter.all)),),
+            child: const Text('All'),
           ),
-          Tooltip(
-            message: 'Only uncompleted todos',
-            child: TextButton(
-              onPressed: () => ref.read(todoListFilter.notifier).state = TodoListFilter.active,
-              style: ButtonStyle(
-                visualDensity: VisualDensity.compact,
-                foregroundColor: MaterialStateProperty.all(
-                  textColorFor(TodoListFilter.active),
-                ),
-              ),
-              child: const Text('Active'),
+          TextButton(
+            onPressed: () => ref.read(todoListFilter.notifier).state = TodoListFilter.active,
+            style: ButtonStyle(
+              visualDensity: VisualDensity.compact,
+              foregroundColor: MaterialStateProperty.all(textColorFor(TodoListFilter.active),),
             ),
+            child: const Text('Active'),
           ),
-          Tooltip(
-            message: 'Only completed todos',
-            child: TextButton(
-              onPressed: () => ref.read(todoListFilter.notifier).state = TodoListFilter.completed,
-              style: ButtonStyle(
-                visualDensity: VisualDensity.compact,
-                foregroundColor: MaterialStateProperty.all(
-                  textColorFor(TodoListFilter.completed),
-                ),
-              ),
-              child: const Text('Completed'),
+          TextButton(
+            onPressed: () => ref.read(todoListFilter.notifier).state = TodoListFilter.completed,
+            style: ButtonStyle(
+              visualDensity: VisualDensity.compact,
+              foregroundColor: MaterialStateProperty.all(textColorFor(TodoListFilter.completed),),
             ),
+            child: const Text('Completed'),
           ),
         ],
       ),

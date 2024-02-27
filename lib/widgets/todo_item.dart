@@ -3,9 +3,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../provider/todo_provider.dart';
+import '../screens/todo_provider.dart';
 
 class TodoItem extends HookConsumerWidget {
-  const TodoItem({super.key});
+  // final TodoModel todo;
+  const TodoItem( {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,7 +47,13 @@ class TodoItem extends HookConsumerWidget {
             focusNode: textFieldFocusNode,
             controller: textEditingController,
           )
-              : Text(todo.description),
+              : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(todo.description),
+                  Text(todo.dateTime.toString(), style: const TextStyle(fontSize: 8),),
+                ],
+              ),
         ),
       ),
     );

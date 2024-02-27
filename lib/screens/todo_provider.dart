@@ -9,6 +9,11 @@ import '../provider/todo_provider.dart';
 import '../widgets/todo_item.dart';
 import '../widgets/todo_toolbar.dart';
 
+/// This ensures that when we add/remove/edit todos, only what the
+/// impacted widgets rebuilds, instead of the entire list of items.
+final currentTodo = Provider<TodoModel>((ref) => throw UnimplementedError());
+
+
 class TodoStateNotifierWidget extends HookConsumerWidget {
   const TodoStateNotifierWidget({super.key});
 
@@ -53,6 +58,7 @@ class TodoStateNotifierWidget extends HookConsumerWidget {
                           onDismissed: (_) {
                             ref.read(todoProvider.notifier).remove(todo.id);
                           },
+                          // child: TodoItem(todo),
                           child: ProviderScope(
                             overrides: [ currentTodo.overrideWithValue(todo), ],
                             child: const TodoItem(),
