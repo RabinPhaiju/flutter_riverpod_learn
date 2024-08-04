@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod_learn/screens/pokemon/pokemon_page.dart';
 import 'package:flutter_riverpod_learn/screens/provider_page.dart';
 import 'package:flutter_riverpod_learn/screens/state_provider_page.dart';
 import 'package:flutter_riverpod_learn/screens/stream_provider.dart';
@@ -37,6 +38,10 @@ class HomePage extends ConsumerWidget {
             ElevatedButton(
                 onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const  TodoStateNotifierWidget()));},
                 child: const Text('Notifier Provider')
+            ),
+            ElevatedButton(
+                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const  PokemonPage()));},
+                child: const Text('Pokemon Page')
             ),
 
             ],
